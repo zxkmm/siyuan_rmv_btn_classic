@@ -3,7 +3,7 @@
 ## 乞讨
 这款插件是开源免费的，因此我需要您的鼓励。  
 如果您喜欢这款插件为您带来的功能，您可以考虑捐款给我，帮助我解决温饱问题：[捐款](https://afdian.com/p/501a9364e05811ef967752540025c377)。（捐款不会解锁更多功能）  
-如果您经济不宽裕，您可以考虑给[我的GitHub仓库](https://github.com/zxkmm/siyuan_rmv_btn)点一下免费的星星鼓励我。  
+如果您经济不宽裕，您可以考虑给[我的GitHub仓库](https://github.com/zxkmm/siyuan_rmv_btn_classic)点一下免费的星星鼓励我。  
 如果您认为您或者您认识的人需要我的技能，欢迎随时雇用我。 
 
 
@@ -16,25 +16,21 @@
 到release页面下载，或者到思源集市搜索“移除按钮”
 
 # 链接
-repo/源码：https://github.com/zxkmm/siyuan_rmv_btn  
+repo/源码：https://github.com/zxkmm/siyuan_rmv_btn_classic  
 
-下载：集市搜索 “移除按钮” 或者 访问 https://github.com/zxkmm/siyuan_rmv_btn/releases
+下载：集市搜索 “移除按钮” 或者 访问 https://github.com/zxkmm/siyuan_rmv_btn_classic/releases
 
-汇报 bug / 提交功能请求：https://github.com/zxkmm/siyuan_rmv_btn/issues  
+汇报 bug / 提交功能请求：https://github.com/zxkmm/siyuan_rmv_btn_classic/issues  
 
 论坛thread：https://ld246.com/article/1701669406727  
 
 # 警告
 
-- 如果你移除了太多东西导致无法正常操作，请到思源工作空间删除整个`siyuan_rmv_btn`文件夹。
-
-- 插件在 DOM 发生变化时会立即注入思源的主界面。在这种情况下，如果添加的项目过多，性能将受到影响。  
-
-- 只保证默认的两个主题正常使用  
+- 此仓库不会被维护。此仓库之所以存在，是因为有很多用户表示不喜欢2.0版本。如果您没有特殊的理由，请使用2.0版本的该插件。
 
 # 备注
 如果您喜欢这个插件，请给我的 GitHub 仓库点亮免费的星星⭐（Star）。  
-链接：[https://github.com/zxkmm/siyuan_rmv_btn](https://github.com/zxkmm/siyuan_rmv_btn)    
+链接：[https://github.com/zxkmm/siyuan_rmv_btn_classic](https://github.com/zxkmm/siyuan_rmv_btn_classic)    
 
 # TODO
  - friendly interface  

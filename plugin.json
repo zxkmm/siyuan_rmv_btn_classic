@@ -1,7 +1,7 @@
 {
-  "name": "siyuan_rmv_btn",
+  "name": "siyuan_rmv_btn_classic",
   "author": "zxkmm",
-  "url": "https://github.com/zxkmm/siyuan_rmv_btn",
+  "url": "https://github.com/zxkmm/siyuan_rmv_btn_classic",
   "version": "1.1.9",
   "minAppVersion": "2.10.14",
   "backends": [
@@ -20,12 +20,12 @@
     "browser-mobile"
   ],
   "displayName": {
-    "en_US": "SiYuan remove buttons",
-    "zh_CN": "移除按钮"
+    "en_US": "SiYuan remove buttons classic",
+    "zh_CN": "移除按钮经典版"
   },
   "description": {
-    "en_US": "A plugin to remove menu items and buttons you don't really need.",
-    "zh_CN": "一个移除你不想要的按钮/菜单项的插件，覆盖电脑和手机"
+    "en_US": "The classic version of the \"remove buttons\" plugin",
+    "zh_CN": "\"移除按钮\"插件的经典版"
   },
   "readme": {
     "en_US": "README.md",
@@ -45,7 +45,7 @@
     "remove",
     "hide",
     "menu",
-    "siyuan_rmv_btn",
+    "siyuan_rmv_btn_classic",
     "zxkmm"
   ]
 }

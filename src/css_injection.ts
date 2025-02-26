@@ -18,110 +18,124 @@ export function rmvMenuItems(
   //                2: hide all
   //                3: hide if two meet each other
 
-  function hideButtonsAndSeparators(_items_, _target_node_) {
-    for (let i = 0; i < _items_.length; i++) {
-      //hide btns
-      let item = _items_[i];
-      if (item.classList.contains("b3-menu__item")) {
-        let labelElement = item.getElementsByClassName("b3-menu__label")[0];
-        if (labelElement) {
-          let span_text = labelElement.textContent.trim();
-          if (_toRemoveListArray_.includes(span_text)) {
-            if (_itemRemovePolicy_ == 1) {
-              item.remove();
-            } else if (_itemRemovePolicy_ == 2) {
-              item.style.display = "none";
-            }
-          }
-        }
+  // if (_monitorImplementation_ == 1) {
+  //   //DOMNodeInserted
+  //   _target_node_.addEventListener(
+  //     "DOMNodeInserted",
+  //     function (e) {
+  //       const buttons = Array.from(_target_node_.getElementsByTagName("button"));
+  //       hideButtonsAndSeparators(buttons, _target_node_, _toRemoveListArray_, _itemRemovePolicy_, _seperateHidingPolicy_);
+  //     },
+  //     false
+  //   );
+  //   console.log(this.i18n.ignore_warning);
+  // } else if (_monitorImplementation_ == 2) {
+  //MutationObserver
+  var observer = new MutationObserver(function (mutationsList, observer) {
+    for (let mutation of mutationsList) {
+      if (mutation.type) {
+        const buttons = Array.from(
+          _target_node_.getElementsByTagName("button")
+        );
+        hideButtonsAndSeparators(
+          buttons,
+          _target_node_,
+          _toRemoveListArray_,
+          _itemRemovePolicy_,
+          _seperateHidingPolicy_
+        );
       }
     }
+  });
 
-    if (_seperateHidingPolicy_ == 3) {
-      // test seperate and hide if two meet each other
-      // TODO: didn't handle the situation that more than two seperators meet each other....
-      let startSeparatorIndex = -1;
-      let previousSeparatorHidden = false;
-      for (let i = 0; i < _items_.length; i++) {
-        if (_items_[i].classList.contains("b3-menu__separator")) {
-          if (startSeparatorIndex === -1) {
-            startSeparatorIndex = i;
-          } else {
-            let allButtonsHidden = true;
-            for (let j = startSeparatorIndex + 1; j < i; j++) {
-              if (_items_[j].style.display !== "none") {
-                allButtonsHidden = false;
-                break;
-              }
-            }
-            if (allButtonsHidden && !previousSeparatorHidden) {
-              _items_[startSeparatorIndex].style.display = "none";
-              previousSeparatorHidden = true;
-            } else {
-              previousSeparatorHidden = false;
-            }
-            startSeparatorIndex = i;
+  observer.observe(_target_node_, { childList: true, subtree: true });
+  // } else {
+  //   var observer = new MutationObserver(function (mutationsList, observer) {
+  //     for (let mutation of mutationsList) {
+  //       if (mutation.type === "childList") {
+  //         const buttons = Array.from(_target_node_.getElementsByTagName("button"));
+  //         hideButtonsAndSeparators(buttons, _target_node_, _toRemoveListArray_, _itemRemovePolicy_, _seperateHidingPolicy_);
+  //       }
+  //     }
+  //   });
+
+  //   observer.observe(_target_node_, { childList: true, subtree: true });
+  // }
+}
+
+export function hideButtonsAndSeparators(
+  _items_,
+  _target_node_,
+  _toRemoveListArray_,
+  _itemRemovePolicy_,
+  _seperateHidingPolicy_
+) {
+  for (let i = 0; i < _items_.length; i++) {
+    //hide btns
+    let item = _items_[i];
+    if (item.classList.contains("b3-menu__item")) {
+      let labelElement = item.getElementsByClassName("b3-menu__label")[0];
+      if (labelElement) {
+        let span_text = labelElement.textContent.trim();
+        if (_toRemoveListArray_.includes(span_text)) {
+          if (_itemRemovePolicy_ == 1) {
+            item.remove();
+          } else if (_itemRemovePolicy_ == 2) {
+            item.style.display = "none";
           }
         }
       }
-    } else if (_seperateHidingPolicy_ == 2) {
-      // hide all
-      for (let i = 0; i < _items_.length; i++) {
-        if (_items_[i].classList.contains("b3-menu__separator")) {
-          _items_[i].style.display = "none";
-        }
-      }
-    } else if (_seperateHidingPolicy_ == 5) {
-      // by @zxhd863943427
-      let separatorList = Array.from(_items_ as HTMLElement[]).filter((item) =>
-        item.classList.contains("b3-menu__separator")
-      );
-      let hiddenList = [];
-      for (let index = 1; index < separatorList.length; index++) {
-        const lastSeparator = separatorList[index - 1];
-        const currentSeparator = separatorList[index];
-        if (currentSeparator.offsetTop < lastSeparator.offsetTop + 30) {
-          hiddenList.push(currentSeparator);
-        }
-      }
-      hiddenList.forEach((x) => (x.style.display = "none"));
     }
   }
 
-  if (_monitorImplementation_ == 1) {
-    //DOMNodeInserted
-    _target_node_.addEventListener(
-      "DOMNodeInserted",
-      function (e) {
-        const buttons = Array.from(_target_node_.getElementsByTagName("button"));
-        this.hideButtonsAndSeparators(buttons);
-      },
-      false
+  if (_seperateHidingPolicy_ == 3) {
+    // test seperate and hide if two meet each other
+    // TODO: didn't handle the situation that more than two seperators meet each other....
+    let startSeparatorIndex = -1;
+    let previousSeparatorHidden = false;
+    for (let i = 0; i < _items_.length; i++) {
+      if (_items_[i].classList.contains("b3-menu__separator")) {
+        if (startSeparatorIndex === -1) {
+          startSeparatorIndex = i;
+        } else {
+          let allButtonsHidden = true;
+          for (let j = startSeparatorIndex + 1; j < i; j++) {
+            if (_items_[j].style.display !== "none") {
+              allButtonsHidden = false;
+              break;
+            }
+          }
+          if (allButtonsHidden && !previousSeparatorHidden) {
+            _items_[startSeparatorIndex].style.display = "none";
+            previousSeparatorHidden = true;
+          } else {
+            previousSeparatorHidden = false;
+          }
+          startSeparatorIndex = i;
+        }
+      }
+    }
+  } else if (_seperateHidingPolicy_ == 2) {
+    // hide all
+    for (let i = 0; i < _items_.length; i++) {
+      if (_items_[i].classList.contains("b3-menu__separator")) {
+        _items_[i].style.display = "none";
+      }
+    }
+  } else if (_seperateHidingPolicy_ == 5) {
+    // by @zxhd863943427
+    let separatorList = Array.from(_items_ as HTMLElement[]).filter((item) =>
+      item.classList.contains("b3-menu__separator")
     );
-    console.log(this.i18n.ignore_warning);
-  } else if (_monitorImplementation_ == 2) {
-    //MutationObserver
-    var observer = new MutationObserver(function (mutationsList, observer) {
-      for (let mutation of mutationsList) {
-        if (mutation.type) {
-          const buttons = Array.from(_target_node_.getElementsByTagName("button"));
-          this.hideButtonsAndSeparators(buttons);
-        }
+    let hiddenList = [];
+    for (let index = 1; index < separatorList.length; index++) {
+      const lastSeparator = separatorList[index - 1];
+      const currentSeparator = separatorList[index];
+      if (currentSeparator.offsetTop < lastSeparator.offsetTop + 30) {
+        hiddenList.push(currentSeparator);
       }
-    });
-
-    observer.observe(_target_node_, { childList: true, subtree: true });
-  } else {
-    var observer = new MutationObserver(function (mutationsList, observer) {
-      for (let mutation of mutationsList) {
-        if (mutation.type === "childList") {
-          const buttons = Array.from(_target_node_.getElementsByTagName("button"));
-          this.hideButtonsAndSeparators(buttons);
-        }
-      }
-    });
-
-    observer.observe(_target_node_, { childList: true, subtree: true });
+    }
+    hiddenList.forEach((x) => (x.style.display = "none"));
   }
 }
 

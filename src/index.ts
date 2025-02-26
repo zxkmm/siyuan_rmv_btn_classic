@@ -38,7 +38,7 @@ const opration_system = navigator.platform.toLocaleLowerCase();
 
 const targetNode = document.getElementById("commonMenu"); //it's the menu's id, fetch firstly and hoping it increase some performance.
 
-export default class siyuan_rmv_btn extends Plugin {
+export default class siyuan_rmv_btn_classic extends Plugin {
   private settingUtils: SettingUtils;
   private isMobile: boolean;
 
@@ -61,18 +61,6 @@ export default class siyuan_rmv_btn extends Plugin {
       type: "checkbox",
       title: this.i18n.totalSwitch,
       description: this.i18n.totalSwitchDesc,
-    });
-    this.settingUtils.addItem({
-      key: "listenImplementation",
-      value: 1,
-      type: "select",
-      title: this.i18n.listenImplementation,
-      description: this.i18n.listenImplementationdesc,
-      options: {
-        1: "DOMNodeInserted",
-        2: "MutationObserver",
-        3: "MutationObserver(type hard coded)",
-      },
     });
     this.settingUtils.addItem({
       key: "seperateHandlePolicy",

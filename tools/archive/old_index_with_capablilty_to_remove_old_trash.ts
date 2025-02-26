@@ -19,7 +19,7 @@ const frontEnd = getFrontend();
 
 const targetNode = document.getElementById('commonMenu'); //it's the menu's id
 
-export default class siyuan_rmv_btn extends Plugin {
+export default class siyuan_rmv_btn_classic extends Plugin {
 
     private settingUtils: SettingUtils;
 
