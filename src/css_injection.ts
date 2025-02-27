@@ -41,7 +41,6 @@ export function rmvMenuItems(
           buttons,
           _target_node_,
           _toRemoveListArray_,
-          _itemRemovePolicy_,
           _seperateHidingPolicy_
         );
       }
@@ -67,7 +66,6 @@ export function hideButtonsAndSeparators(
   _items_,
   _target_node_,
   _toRemoveListArray_,
-  _itemRemovePolicy_,
   _seperateHidingPolicy_
 ) {
   for (let i = 0; i < _items_.length; i++) {
@@ -78,11 +76,7 @@ export function hideButtonsAndSeparators(
       if (labelElement) {
         let span_text = labelElement.textContent.trim();
         if (_toRemoveListArray_.includes(span_text)) {
-          if (_itemRemovePolicy_ == 1) {
-            item.remove();
-          } else if (_itemRemovePolicy_ == 2) {
             item.style.display = "none";
-          }
         }
       }
     }

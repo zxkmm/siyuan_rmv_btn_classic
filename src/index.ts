@@ -75,18 +75,18 @@ export default class siyuan_rmv_btn_classic extends Plugin {
         5: "@zxhd863943427",
       },
     });
-    this.settingUtils.addItem({
-      key: "itemRemovePolicy",
-      value: 1,
-      type: "select",
-      title: this.i18n.itemRemovePolicy,
-      description: this.i18n.itemRemovePolicydesc,
-      options: {
-        1: this.i18n.itemRemovePolicyRemove,
-        2: this.i18n.itemRemovePolicyDisplayNone,
-        // 3: this.i18n.seperateHandlePolicyCss
-      },
-    });
+    // this.settingUtils.addItem({
+    //   key: "itemRemovePolicy",
+    //   value: 1,
+    //   type: "select",
+    //   title: this.i18n.itemRemovePolicy,
+    //   description: this.i18n.itemRemovePolicydesc,
+    //   options: {
+    //     1: this.i18n.itemRemovePolicyRemove,
+    //     2: this.i18n.itemRemovePolicyDisplayNone,
+    //     // 3: this.i18n.seperateHandlePolicyCss
+    //   },
+    // });
     this.settingUtils.addItem({
       key: "unwantedMenuItem",
       value: "",
